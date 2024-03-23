@@ -1,0 +1,8 @@
+.walletMainSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #626262;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  border-radius: 10px;
+}

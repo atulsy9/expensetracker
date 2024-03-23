@@ -1,0 +1,10 @@
+.recharts-wrapper {
+  bottom: 50px !important;
+  right: 30px !important;
+  cursor: pointer;
+}
+
+.recharts-pie {
+  width: 199px !important;
+  height: 199px !important;
+}

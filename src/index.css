@@ -1,11 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&family=Varela+Round&display=swap");
 :root {
-  /* --css-primary: #34c94b;
-    --css-black: #121212;
-    --css-white: #ffff; */
+  --css-primary: #3b3b3b;
+  --css-black: #121212;
+  --css-white: #ffff;
   min-height: 100%;
-  background: linear-gradient(45deg, #8421fc, #2ccce8);
-  font-family: "Varela Round", sans-serif;
-  font-weight: 600;
+  background: #3b3b3b;
+  font-family: "Ubuntu", sans-serif;
   font-style: normal;
 }
 

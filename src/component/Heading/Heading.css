@@ -1,0 +1,11 @@
+.heading {
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--css-white);
+  margin: 12px 0 0 20px;
+}
+
+.italicStyle {
+  font-style: italic;
+  font-size: 28px;
+}
