@@ -3,13 +3,12 @@ import React from "react";
 import { PieChart, Pie, Cell } from "recharts";
 
 const data = [
-  { name: "Group A", value: 400 },
-  { name: "Group B", value: 300 },
-  { name: "Group C", value: 300 },
-  { name: "Group D", value: 200 },
+  { name: "entertainment", price: 300 },
+  { name: "food", price: 150 },
+  { name: "travel", price: 50 },
 ];
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28"];
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
@@ -39,7 +38,7 @@ const renderCustomizedLabel = ({
 };
 export default function Graph() {
   return (
-    <PieChart width={300} height={300}>
+    <PieChart width={300} height={300} className="reactPie">
       <Pie
         data={data}
         cx={200}
@@ -48,7 +47,7 @@ export default function Graph() {
         label={renderCustomizedLabel}
         outerRadius={80}
         fill="#8884d8"
-        dataKey="value"
+        dataKey={"price"}
       >
         {data.map((entry, index) => (
           <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />

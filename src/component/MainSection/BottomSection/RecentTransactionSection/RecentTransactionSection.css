@@ -1,0 +1,65 @@
+.transactionContainer {
+  background-color: var(--css-white);
+  margin: 0 3rem;
+  border-radius: 15px;
+  height: 290px;
+  padding: 1.5rem;
+}
+.transactionInnerDiv {
+  display: flex;
+  /* align-content: center; */
+  justify-content: space-between;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #9b9b9b;
+}
+
+.titleSection {
+  display: flex;
+  justify-content: space-between;
+  width: 65%;
+}
+
+.editSection {
+  width: 15%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.editBtn {
+  background-color: #f4bb4a;
+  width: 40px;
+  height: 40px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.deleteBtn {
+  background-color: #ff3e3e;
+  width: 40px;
+  height: 40px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.paginationMainDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination {
+  background-color: #43967b;
+  border-radius: 10px;
+  width: 35px;
+  height: 35px;
+  margin: 0.3rem 1rem;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+}

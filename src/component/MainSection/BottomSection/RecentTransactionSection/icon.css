@@ -1,0 +1,9 @@
+.iconStyle {
+  background-color: #d9d9d9;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
