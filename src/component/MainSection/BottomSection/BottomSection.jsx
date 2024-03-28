@@ -3,7 +3,7 @@ import "./BottomSection.css";
 import HorizontalBarChart from "./HorizontalBarChart/HorizontalBarChart";
 import RecentTransactionSection from "./RecentTransactionSection/RecentTransactionSection";
 
-function BottomSection({ data }) {
+function BottomSection({ data, graphData }) {
   return (
     <div className="outerDiv">
       <div style={{ width: "70vW" }}>
@@ -12,7 +12,7 @@ function BottomSection({ data }) {
       </div>
       <div>
         <Heading fontStyle="italic">Top Expenses</Heading>
-        <HorizontalBarChart />
+        <HorizontalBarChart data={graphData} />
       </div>
     </div>
   );
