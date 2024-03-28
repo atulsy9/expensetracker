@@ -3,13 +3,24 @@ import ExpenseCard from "./expenseCard/ExpenseCard";
 import Graph from "./pieChart/Graph.tsx";
 import ColorIndicator from "./colorIndecator/colorIndicator.jsx";
 
-function WalletSection({ updateData, data, graphData }) {
+function WalletSection({
+  updateData,
+  data,
+  graphData,
+  walletBalace,
+  setWalletBalance,
+  totalExpense,
+}) {
   return (
     <div className="walletMainSection">
-      <ExpenseCard value={5000} balance={true}>
+      <ExpenseCard
+        value={walletBalace}
+        balance={true}
+        changebalance={setWalletBalance}
+      >
         Wallet Balance
       </ExpenseCard>
-      <ExpenseCard updateData={updateData} value={500}>
+      <ExpenseCard updateData={updateData} value={totalExpense}>
         Expenses
       </ExpenseCard>
       <div style={{ width: "24rem" }}>

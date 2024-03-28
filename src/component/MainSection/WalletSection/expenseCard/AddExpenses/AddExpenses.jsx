@@ -23,7 +23,6 @@ const AddExpenses = ({ updateData, children, value }) => {
   };
 
   const handleChange = (e) => {
-    // setData({ [e.target.name]: e.target.value });
     const { name, value } = e.target;
     if (name === "price") {
       setCurrData((prevState) => ({

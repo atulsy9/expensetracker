@@ -23,7 +23,6 @@ const renderCustomizedLabel = ({
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
   const percentage = `${(percent * 100).toFixed(0)}%`;
   if (percentage !== "0%") {
-    console.log(percentage);
     return (
       <text
         x={x}
@@ -38,7 +37,6 @@ const renderCustomizedLabel = ({
   }
 };
 export default function Graph({ data, noTransancation }) {
-  console.log(data);
   return (
     <PieChart width={300} height={300} className="reactPie">
       {!noTransancation ? (

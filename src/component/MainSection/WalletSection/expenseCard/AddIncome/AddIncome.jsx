@@ -2,13 +2,22 @@ import "./AddIncome.css";
 import { useState } from "react";
 import Modal from "react-modal";
 
-const AddIncome = ({ children, value }) => {
+const AddIncome = ({ children, value, changebalance }) => {
   const [openModal, SetModal] = useState(false);
+  const [balance, setBalance] = useState();
 
   const handelSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
+    changebalance((prevState) => prevState + balance);
+    setBalance();
+    SetModal(false);
   };
+
+  const handleChange = (e) => {
+    const { value } = e.target;
+    setBalance(Number(value));
+  };
+
   return (
     <div className="expenseCard">
       <div className="text">
@@ -37,7 +46,13 @@ const AddIncome = ({ children, value }) => {
         <h2>Add Balance</h2>
         <form onSubmit={handelSubmit}>
           <div className="addBalaceOuterDiv">
-            <input placeholder="Income Amount" className="inputBox" />
+            <input
+              placeholder="Income Amount"
+              name="title"
+              className="inputBox"
+              onChange={handleChange}
+              defaultValue={balance}
+            />
             <button className="submitbtn">Add Balance</button>
             <button className="cancelBtn" onClick={() => SetModal(false)}>
               Cancel
