@@ -4,6 +4,11 @@ import Modal from "react-modal";
 
 const AddIncome = ({ children, value }) => {
   const [openModal, SetModal] = useState(false);
+
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+  };
   return (
     <div className="expenseCard">
       <div className="text">
@@ -24,24 +29,20 @@ const AddIncome = ({ children, value }) => {
         // className="ReactModal__Content"
         style={{
           content: {
-            width: "40rem",
-            height: "20rem",
+            inset: null,
             backgroundColor: "#EFEFEFD9",
           },
         }}
       >
-        <h2>Add Expenses</h2>
-        <form>
-          <div className="inputOuterdiv">
-            <input placeholder="Title" className="inputBox" />
-            <input placeholder="Price" className="inputBox" />
-            <input placeholder="Select Category" className="inputBox" />
-            <input placeholder="dd/mm/yyyy" className="inputBox" />
+        <h2>Add Balance</h2>
+        <form onSubmit={handelSubmit}>
+          <div className="addBalaceOuterDiv">
+            <input placeholder="Income Amount" className="inputBox" />
+            <button className="submitbtn">Add Balance</button>
+            <button className="cancelBtn" onClick={() => SetModal(false)}>
+              Cancel
+            </button>
           </div>
-          <button className="submitbtn">Add Expenses</button>
-          <button className="cancelBtn" onClick={() => SetModal(false)}>
-            Cancel
-          </button>
         </form>
       </Modal>
     </div>

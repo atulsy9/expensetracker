@@ -1,4 +1,39 @@
-.ReactModal__Content {
-  top: 30% !important;
-  left: 30% !important;
+.inputBox {
+  background-color: var(--css-white);
+  border-width: 0;
+  width: 223px;
+  height: 51px;
+  border-radius: 15px;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.inputOuterdiv {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.submitbtn {
+  width: 223px;
+  height: 51px;
+  border-radius: 15px;
+  background-color: #f4bb4a;
+  color: var(--css-white);
+  box-shadow: 0px 4px 4px 0px #00000040;
+  border-width: 0;
+  margin: 1rem 2rem 0;
+}
+
+.cancelBtn {
+  width: 112px;
+  height: 51px;
+  border-radius: 15px;
+  border-width: 0;
+  background-color: #e3e3e3;
+}
+
+.submitbtn:hover,
+.cancelBtn:hover {
+  cursor: pointer;
 }

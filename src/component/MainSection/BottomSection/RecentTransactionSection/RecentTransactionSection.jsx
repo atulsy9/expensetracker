@@ -5,27 +5,27 @@ import { TiDeleteOutline } from "react-icons/ti";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
 
-const RecentTransactionSection = () => {
-  const data = [
-    {
-      categories: "food",
-      title: "samosa",
-      date: "March 20, 2024",
-      price: "150",
-    },
-    {
-      categories: "entertainment",
-      title: "movie",
-      date: "March 21, 2024",
-      price: "300",
-    },
-    {
-      categories: "travel",
-      title: "Auto",
-      date: "March 22, 2024",
-      price: "50",
-    },
-  ];
+const RecentTransactionSection = ({ data }) => {
+  // const data = [
+  //   {
+  //     categories: "food",
+  //     title: "samosa",
+  //     date: "March 20, 2024",
+  //     price: "150",
+  //   },
+  //   {
+  //     categories: "entertainment",
+  //     title: "movie",
+  //     date: "March 21, 2024",
+  //     price: "300",
+  //   },
+  //   {
+  //     categories: "travel",
+  //     title: "Auto",
+  //     date: "March 22, 2024",
+  //     price: "50",
+  //   },
+  // ];
   return (
     <div className="transactionContainer">
       {data.map((val) => {
