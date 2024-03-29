@@ -4,33 +4,39 @@ import { MdOutlineEdit } from "react-icons/md";
 import { TiDeleteOutline } from "react-icons/ti";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
+import { useEffect, useState } from "react";
+
+const DATAPERPAGE = 3;
 
 const RecentTransactionSection = ({ data }) => {
-  // const data = [
-  //   {
-  //     categories: "food",
-  //     title: "samosa",
-  //     date: "March 20, 2024",
-  //     price: "150",
-  //   },
-  //   {
-  //     categories: "entertainment",
-  //     title: "movie",
-  //     date: "March 21, 2024",
-  //     price: "300",
-  //   },
-  //   {
-  //     categories: "travel",
-  //     title: "Auto",
-  //     date: "March 22, 2024",
-  //     price: "50",
-  //   },
-  // ];
+  const [pageCount, SetPageCount] = useState(1);
+  const [perPageData, setPerpageData] = useState([]);
+
+  useEffect(() => {
+    let newArr = data.slice(
+      (pageCount - 1) * DATAPERPAGE,
+      pageCount * DATAPERPAGE
+    );
+    console.log(newArr);
+    setPerpageData(newArr);
+  }, [pageCount, data]);
+
+  const handelClickLeft = () => {
+    if (pageCount - 1 > 0) {
+      SetPageCount((prevVal) => prevVal - 1);
+    }
+  };
+  const handelClickright = () => {
+    const maxPage = Math.ceil(data.length / DATAPERPAGE);
+    if (pageCount < maxPage) {
+      SetPageCount((prevVal) => prevVal + 1);
+    }
+  };
   if (data.length) {
     return (
       <div className="transactionContainer">
         <div>
-          {data.map((val) => {
+          {perPageData.map((val) => {
             return (
               <div key={val.title} className="transactionInnerDiv">
                 <Icon categories={val.categories} />
@@ -54,18 +60,23 @@ const RecentTransactionSection = ({ data }) => {
           })}
         </div>
         <div className="paginationMainDiv">
-          <FaRegArrowAltCircleLeft size={"2rem"} />
-          <div className="pagination">1</div>
-          <FaRegArrowAltCircleRight size={"2rem"} />
+          <FaRegArrowAltCircleLeft
+            className="leftClickBtn"
+            size={"2rem"}
+            onClick={handelClickLeft}
+          />
+          <div className="pagination">{pageCount}</div>
+          <FaRegArrowAltCircleRight
+            className="rightClickBtn"
+            size={"2rem"}
+            onClick={handelClickright}
+          />
         </div>
       </div>
     );
   } else {
     return (
-      <div className="transactionContainer noDataDiv">
-        {" "}
-        No transactions to show
-      </div>
+      <div className="transactionContainer noDataDiv"> No Expenses to show</div>
     );
   }
 };

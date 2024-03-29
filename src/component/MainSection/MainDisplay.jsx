@@ -31,24 +31,6 @@ function MainDisplay() {
     setTotalExpense((prevBal) => prevBal + currData.price);
     setWalletBalance((prevBal) => prevBal - currData.price);
   };
-  // const totalExpenses = () => {
-  //   data.forEach((val) => {
-  //     // setTotalExpense((prevBal) => (prevBal += val.price));
-  //     let index = graphData.findIndex(
-  //       (idx) => idx.categories === val.categories.toLowerCase()
-  //     );
-  //     graphData[index].price += val.price;
-  //     setGraphData(() => [...graphData]);
-  //   });
-  //   // setWalletBalance((prevBal) => (prevBal -= totalExpense));
-  // };
-
-  // useEffect(() => {
-  //   totalExpenses();
-  //   let totalExp = graphData.reduce((acc, obj) => acc + obj.price, 0);
-  //   setTotalExpense(totalExp);
-  //   console.log(graphData);
-  // }, [data]);
 
   return (
     <div className="mainDiv">
@@ -60,7 +42,7 @@ function MainDisplay() {
         setWalletBalance={setWalletBalance}
         totalExpense={totalExpense}
       />
-      <BottomSection data={data.slice(0, 3)} graphData={graphData} />
+      <BottomSection data={data} graphData={graphData} />
     </div>
   );
 }

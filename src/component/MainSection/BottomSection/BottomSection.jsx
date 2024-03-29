@@ -1,14 +1,28 @@
+import { useEffect, useState } from "react";
 import Heading from "../../Heading/Heading";
 import "./BottomSection.css";
 import HorizontalBarChart from "./HorizontalBarChart/HorizontalBarChart";
 import RecentTransactionSection from "./RecentTransactionSection/RecentTransactionSection";
 
 function BottomSection({ data, graphData }) {
+  const [transactionData, setTransactionData] = useState([]);
+  const rececntTransactionData = (data) => {
+    data.sort((a, b) => {
+      return new Date(b.date) - new Date(a.date);
+    });
+  };
+
+  useEffect(() => {
+    rececntTransactionData(data);
+    setTransactionData(data);
+    // console.log(data);
+  }, [data]);
+
   return (
     <div className="outerDiv">
       <div style={{ width: "70vW" }}>
         <Heading fontStyle="italic">Recent Transactions</Heading>
-        <RecentTransactionSection data={data} />
+        <RecentTransactionSection data={transactionData} />
       </div>
       <div>
         <Heading fontStyle="italic">Top Expenses</Heading>

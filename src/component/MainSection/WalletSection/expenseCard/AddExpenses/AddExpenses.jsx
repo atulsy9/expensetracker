@@ -10,25 +10,46 @@ const AddExpenses = ({ updateData, children, value }) => {
     categories: "",
     date: "",
   });
+
+  const validateData = ({ date }) => {
+    let currDate = new Date(date);
+    if (new Date() - currDate > 0) {
+      return true;
+    }
+    return false;
+  };
+
   const handelSubmit = (e) => {
     e.preventDefault();
-    updateData(currdata);
-    setCurrData({
-      title: "",
-      price: "",
-      categories: "",
-      date: "",
-    });
-    SetModal(false);
+    if (validateData(currdata)) {
+      updateData(currdata);
+      setCurrData({
+        title: "",
+        price: "",
+        categories: "",
+        date: "",
+      });
+      SetModal(false);
+    } else {
+      alert("Date can't be greater than the current Date");
+    }
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "price") {
-      setCurrData((prevState) => ({
-        ...prevState,
-        [name]: Number(value),
-      }));
+      if (Number(value)) {
+        setCurrData((prevState) => ({
+          ...prevState,
+          [name]: Number(value),
+        }));
+      } else {
+        alert("Please Enter a Number");
+        setCurrData((prevState) => ({
+          ...prevState,
+          [name]: "",
+        }));
+      }
     } else {
       setCurrData((prevState) => ({
         ...prevState,
@@ -53,6 +74,7 @@ const AddExpenses = ({ updateData, children, value }) => {
         + Add Expenses
       </button>
       <Modal
+        ariaHideApp={false}
         isOpen={openModal}
         style={{
           content: {
@@ -70,24 +92,25 @@ const AddExpenses = ({ updateData, children, value }) => {
               name="title"
               className="inputBox"
               onChange={handleChange}
-              defaultValue={currdata.title}
+              value={currdata.title}
+              required
             />
             <input
               placeholder="Price"
               name="price"
               className="inputBox"
               onChange={handleChange}
-              defaultValue={currdata.price}
+              value={currdata.price}
+              required
             />
             <select
               className="inputBox"
               name="categories"
               onChange={handleChange}
-              defaultValue={currdata.categories}
+              defaultValue={""}
+              required
             >
-              <option value="" disabled selected>
-                Choose your option
-              </option>
+              <option selected>Choose your option</option>
               <option>Entertainment</option>
               <option>Food</option>
               <option>Travel</option>
@@ -99,6 +122,7 @@ const AddExpenses = ({ updateData, children, value }) => {
               className="inputBox"
               onChange={handleChange}
               defaultValue={currdata.date}
+              required
             />
           </div>
           <button className="submitbtn">Add Expenses</button>
