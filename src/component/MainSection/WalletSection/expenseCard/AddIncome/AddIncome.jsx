@@ -15,7 +15,12 @@ const AddIncome = ({ children, value, changebalance }) => {
 
   const handleChange = (e) => {
     const { value } = e.target;
-    setBalance(Number(value));
+    if (Number(value) || value === "") {
+      setBalance(Number(value));
+    } else {
+      alert("Please Enter a Number");
+      setBalance(0);
+    }
   };
 
   return (
@@ -51,7 +56,8 @@ const AddIncome = ({ children, value, changebalance }) => {
               name="title"
               className="inputBox"
               onChange={handleChange}
-              defaultValue={balance}
+              value={balance}
+              required
             />
             <div className="btnMainDiv">
               <button className="submitbtn">Add Balance</button>
