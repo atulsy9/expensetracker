@@ -51,14 +51,12 @@ export default function Graph({ data, noTransancation }) {
           dataKey={"price"}
         >
           {data.map((entry, index) => {
-            if (entry.price) {
-              return (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={COLORS[entry.categories.toLowerCase()]}
-                />
-              );
-            }
+            return (
+              <Cell
+                key={`cell-${index}`}
+                fill={COLORS[entry.categories.toLowerCase()]}
+              />
+            );
           })}
         </Pie>
       ) : (

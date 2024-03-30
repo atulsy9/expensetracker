@@ -4,7 +4,7 @@ import "./BottomSection.css";
 import HorizontalBarChart from "./HorizontalBarChart/HorizontalBarChart";
 import RecentTransactionSection from "./RecentTransactionSection/RecentTransactionSection";
 
-function BottomSection({ data, graphData }) {
+function BottomSection({ data, graphData, updateData }) {
   const [transactionData, setTransactionData] = useState([]);
   const rececntTransactionData = (data) => {
     data.sort((a, b) => {
@@ -15,14 +15,16 @@ function BottomSection({ data, graphData }) {
   useEffect(() => {
     rececntTransactionData(data);
     setTransactionData(data);
-    // console.log(data);
   }, [data]);
 
   return (
     <div className="outerDiv">
       <div style={{ width: "70vW" }}>
         <Heading fontStyle="italic">Recent Transactions</Heading>
-        <RecentTransactionSection data={transactionData} />
+        <RecentTransactionSection
+          data={transactionData}
+          updateData={updateData}
+        />
       </div>
       <div>
         <Heading fontStyle="italic">Top Expenses</Heading>

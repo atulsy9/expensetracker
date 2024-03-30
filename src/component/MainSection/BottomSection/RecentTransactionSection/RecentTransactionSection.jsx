@@ -5,19 +5,21 @@ import { TiDeleteOutline } from "react-icons/ti";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import Modal from "react-modal";
+import ReactModel from "../../ReactModel/ReactModel";
 
 const DATAPERPAGE = 3;
 
-const RecentTransactionSection = ({ data }) => {
+const RecentTransactionSection = ({ data, updateData }) => {
   const [pageCount, SetPageCount] = useState(1);
   const [perPageData, setPerpageData] = useState([]);
-
+  const [openEditModel, setOpenEditModel] = useState(false);
+  const [toEditdata, settoEditData] = useState({});
   useEffect(() => {
     let newArr = data.slice(
       (pageCount - 1) * DATAPERPAGE,
       pageCount * DATAPERPAGE
     );
-    console.log(newArr);
     setPerpageData(newArr);
   }, [pageCount, data]);
 
@@ -32,13 +34,26 @@ const RecentTransactionSection = ({ data }) => {
       SetPageCount((prevVal) => prevVal + 1);
     }
   };
+
+  const handelEdit = (key) => {
+    let index = data.findIndex((obj) => obj._id === key);
+    settoEditData(data[index]);
+    setOpenEditModel(true);
+  };
+
+  const handelDelete = (key) => {
+    let index = data.findIndex((obj) => obj._id === key);
+    let newObj = { ...data[index] };
+    newObj.price = 0;
+    updateData({ ...newObj });
+  };
   if (data.length) {
     return (
       <div className="transactionContainer">
         <div>
           {perPageData.map((val) => {
             return (
-              <div key={val.title} className="transactionInnerDiv">
+              <div key={val._id} className="transactionInnerDiv">
                 <Icon categories={val.categories} />
                 <div className="titleSection">
                   <div>
@@ -49,10 +64,24 @@ const RecentTransactionSection = ({ data }) => {
                 </div>
                 <div className="editSection">
                   <div className="editBtn">
-                    <MdOutlineEdit size={"2rem"} />
+                    <MdOutlineEdit
+                      size={"2rem"}
+                      onClick={() => handelEdit(val._id)}
+                    />
                   </div>
+                  <ReactModel
+                    isOpen={openEditModel}
+                    SetModel={setOpenEditModel}
+                    data={data}
+                    updateData={updateData}
+                    edit={true}
+                    tobeEdit={toEditdata}
+                  />
                   <div className="deleteBtn">
-                    <TiDeleteOutline size={"2rem"} />
+                    <TiDeleteOutline
+                      size={"2rem"}
+                      onClick={() => handelDelete(val._id)}
+                    />
                   </div>
                 </div>
               </div>

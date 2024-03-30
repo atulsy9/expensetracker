@@ -4,13 +4,12 @@
   border-radius: 15px;
   height: 290px;
   padding: 1.5rem;
-  /* display: flex; */
   flex-direction: column;
-  /* justify-content: space-between; */
   position: relative;
 }
 
 .noDataDiv {
+  display: flex;
   justify-content: center;
   align-items: center;
   font-size: larger;

@@ -1,62 +1,62 @@
 import "./AddExpenses.css";
 import { useState } from "react";
-import Modal from "react-modal";
+import ReactModel from "../../../ReactModel/ReactModel";
 
 const AddExpenses = ({ updateData, children, value }) => {
   const [openModal, SetModal] = useState(false);
-  const [currdata, setCurrData] = useState({
-    title: "",
-    price: "",
-    categories: "",
-    date: "",
-  });
+  // const [currdata, setCurrData] = useState({
+  //   title: "",
+  //   price: "",
+  //   categories: "",
+  //   date: "",
+  // });
 
-  const validateData = ({ date }) => {
-    let currDate = new Date(date);
-    if (new Date() - currDate > 0) {
-      return true;
-    }
-    return false;
-  };
+  // const validateData = ({ date }) => {
+  //   let currDate = new Date(date);
+  //   if (new Date() - currDate > 0) {
+  //     return true;
+  //   }
+  //   return false;
+  // };
 
-  const handelSubmit = (e) => {
-    e.preventDefault();
-    if (validateData(currdata)) {
-      updateData(currdata);
-      setCurrData({
-        title: "",
-        price: "",
-        categories: "",
-        date: "",
-      });
-      SetModal(false);
-    } else {
-      alert("Date can't be greater than the current Date");
-    }
-  };
+  // const handelSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (validateData(currdata)) {
+  //     updateData(currdata);
+  //     setCurrData({
+  //       title: "",
+  //       price: "",
+  //       categories: "",
+  //       date: "",
+  //     });
+  //     SetModal(false);
+  //   } else {
+  //     alert("Date can't be greater than the current Date");
+  //   }
+  // };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    if (name === "price") {
-      if (Number(value)) {
-        setCurrData((prevState) => ({
-          ...prevState,
-          [name]: Number(value),
-        }));
-      } else {
-        alert("Please Enter a Number");
-        setCurrData((prevState) => ({
-          ...prevState,
-          [name]: "",
-        }));
-      }
-    } else {
-      setCurrData((prevState) => ({
-        ...prevState,
-        [name]: value,
-      }));
-    }
-  };
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   if (name === "price") {
+  //     if (Number(value)) {
+  //       setCurrData((prevState) => ({
+  //         ...prevState,
+  //         [name]: Number(value),
+  //       }));
+  //     } else {
+  //       alert("Please Enter a Number");
+  //       setCurrData((prevState) => ({
+  //         ...prevState,
+  //         [name]: "",
+  //       }));
+  //     }
+  //   } else {
+  //     setCurrData((prevState) => ({
+  //       ...prevState,
+  //       [name]: value,
+  //     }));
+  //   }
+  // };
 
   return (
     <div className="expenseCard">
@@ -73,7 +73,12 @@ const AddExpenses = ({ updateData, children, value }) => {
       >
         + Add Expenses
       </button>
-      <Modal
+      <ReactModel
+        isOpen={openModal}
+        updateData={updateData}
+        SetModel={SetModal}
+      />
+      {/* <Modal
         ariaHideApp={false}
         isOpen={openModal}
         style={{
@@ -130,7 +135,7 @@ const AddExpenses = ({ updateData, children, value }) => {
             Cancel
           </button>
         </form>
-      </Modal>
+      </Modal> */}
     </div>
   );
 };
