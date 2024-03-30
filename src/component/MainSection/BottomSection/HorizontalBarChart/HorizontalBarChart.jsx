@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import { useEffect } from "react";
 import "./HorizontalBarChart.css";
 
 import { BarChart, Bar, XAxis, YAxis } from "recharts";
+import { useState } from "react";
 
 const HorizontalBarChart = ({ data }) => {
-  // const [regulatedata, setRegulateData] = useState([constantdata]);
-  const schema = (data) => {
-    data.forEach((val) => {});
-  };
-  const sortedData = data.sort((a, b) => {
-    return b.price - a.price;
-  });
+  const [sortedData, setSortedData] = useState(data);
+  useEffect(() => {
+    setSortedData(
+      data.sort((a, b) => {
+        return b.price - a.price;
+      })
+    );
+  }, [data]);
+
   if (data.length) {
     return (
       <BarChart

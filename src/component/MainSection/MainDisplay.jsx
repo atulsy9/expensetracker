@@ -3,12 +3,25 @@ import BottomSection from "./BottomSection/BottomSection";
 import "./MainDisplay.css";
 import WalletSection from "./WalletSection/WalletSection";
 import { useSnackbar } from "notistack";
+
 function MainDisplay() {
   const INITIALWALLETBALANCE = 5000;
+  // const checkForLocalData = () => {
+  //   let storedData = localStorage.getItem("walletData");
+  //   if (storedData) {
+  //     const { data, walletBalace, totalExpense } = JSON.parse(storedData);
+  //     // SetData(data);
+  //     // setWalletBalance(walletBalace);
+  //     // setTotalExpense(totalExpense);
+  //     return data;
+  //   }
+  //   return INITIALWALLETBALANCE;
+  // };
   const { enqueueSnackbar } = useSnackbar();
   const [data, SetData] = useState([]);
   const [walletBalace, setWalletBalance] = useState(INITIALWALLETBALANCE);
   const [totalExpense, setTotalExpense] = useState(0);
+  const [initialPageLoad, setInitialPageLoad] = useState(true);
   const [graphData, setGraphData] = useState([
     {
       categories: "food",
@@ -24,12 +37,41 @@ function MainDisplay() {
     },
   ]);
 
+  useEffect(() => {
+    let storedData = localStorage.getItem("walletData");
+    if (storedData) {
+      const { data, walletBalace, totalExpense, graphData } =
+        JSON.parse(storedData);
+      SetData(data);
+      setGraphData(graphData);
+      setWalletBalance(walletBalace);
+      setTotalExpense(totalExpense);
+    }
+  }, []);
+
+  const objForLocalStorage = () => {
+    let obj = {
+      data: data,
+      walletBalace: walletBalace,
+      totalExpense: totalExpense,
+      graphData: graphData,
+    };
+    return obj;
+  };
+
+  useEffect(() => {
+    if (!initialPageLoad) {
+      localStorage.setItem("walletData", JSON.stringify(objForLocalStorage()));
+    }
+    setInitialPageLoad(false);
+  }, [data, walletBalace, totalExpense]);
+
   const ValidateWalletBalance = (bal, val) => {
     if (bal - val >= 0) {
       return true;
     } else {
       enqueueSnackbar(
-        " 😥 Opps!!! Wallet Balance is not sufficient at add the expenses, Add Balance to continue...",
+        " 😥 Opps!!! Wallet Balance is not sufficient to add the expenses, Add Balance to continue...",
         { variant: "error" }
       );
     }
