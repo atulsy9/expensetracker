@@ -1,5 +1,6 @@
 import Modal from "react-modal";
 import { useEffect, useState } from "react";
+import "./ReactModel.css";
 
 const ReactModel = ({ isOpen, updateData, SetModel, tobeEdit, edit }) => {
   const [currdata, setCurrData] = useState({
@@ -68,7 +69,7 @@ const ReactModel = ({ isOpen, updateData, SetModel, tobeEdit, edit }) => {
       isOpen={isOpen}
       style={{
         content: {
-          width: "40rem",
+          maxWidth: "40rem",
           height: "20rem",
           backgroundColor: "#EFEFEFD9",
         },
@@ -115,10 +116,12 @@ const ReactModel = ({ isOpen, updateData, SetModel, tobeEdit, edit }) => {
             required
           />
         </div>
-        <button className="submitbtn">Add Expenses</button>
-        <button className="cancelBtn" onClick={() => SetModel(false)}>
-          Cancel
-        </button>
+        <div className="btnMainDiv">
+          <button className="submitbtn">Add Expenses</button>
+          <button className="cancelBtn" onClick={() => SetModel(false)}>
+            Cancel
+          </button>
+        </div>
       </form>
     </Modal>
   );

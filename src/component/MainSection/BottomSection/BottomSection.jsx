@@ -19,14 +19,14 @@ function BottomSection({ data, graphData, updateData }) {
 
   return (
     <div className="outerDiv">
-      <div style={{ width: "70vW" }}>
+      <div style={{ width: "70vW" }} className="innerDiv">
         <Heading fontStyle="italic">Recent Transactions</Heading>
         <RecentTransactionSection
           data={transactionData}
           updateData={updateData}
         />
       </div>
-      <div>
+      <div className="innerDiv">
         <Heading fontStyle="italic">Top Expenses</Heading>
         <HorizontalBarChart data={graphData} />
       </div>

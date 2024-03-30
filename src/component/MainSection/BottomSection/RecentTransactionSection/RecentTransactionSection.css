@@ -88,3 +88,9 @@
   cursor: pointer;
   background-color: #9b9b9b;
 }
+
+@media screen and (max-width: 768px) {
+  .transactionContainer {
+    margin: 0;
+  }
+}

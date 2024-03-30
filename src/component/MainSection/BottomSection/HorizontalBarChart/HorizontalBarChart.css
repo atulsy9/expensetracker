@@ -2,3 +2,14 @@
   background-color: var(--css-white);
   border-radius: 15px;
 }
+
+.recharts-wrapper {
+  width: 30vw !important;
+  height: 290px !important;
+}
+
+@media screen and (max-width: 768px) {
+  .recharts-wrapper {
+    width: 100% !important;
+  }
+}

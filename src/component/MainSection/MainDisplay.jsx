@@ -6,17 +6,6 @@ import { useSnackbar } from "notistack";
 
 function MainDisplay() {
   const INITIALWALLETBALANCE = 5000;
-  // const checkForLocalData = () => {
-  //   let storedData = localStorage.getItem("walletData");
-  //   if (storedData) {
-  //     const { data, walletBalace, totalExpense } = JSON.parse(storedData);
-  //     // SetData(data);
-  //     // setWalletBalance(walletBalace);
-  //     // setTotalExpense(totalExpense);
-  //     return data;
-  //   }
-  //   return INITIALWALLETBALANCE;
-  // };
   const { enqueueSnackbar } = useSnackbar();
   const [data, SetData] = useState([]);
   const [walletBalace, setWalletBalance] = useState(INITIALWALLETBALANCE);

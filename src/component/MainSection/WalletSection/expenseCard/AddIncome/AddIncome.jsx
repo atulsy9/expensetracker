@@ -53,10 +53,12 @@ const AddIncome = ({ children, value, changebalance }) => {
               onChange={handleChange}
               defaultValue={balance}
             />
-            <button className="submitbtn">Add Balance</button>
-            <button className="cancelBtn" onClick={() => SetModal(false)}>
-              Cancel
-            </button>
+            <div className="btnMainDiv">
+              <button className="submitbtn">Add Balance</button>
+              <button className="cancelBtn" onClick={() => SetModal(false)}>
+                Cancel
+              </button>
+            </div>
           </div>
         </form>
       </Modal>

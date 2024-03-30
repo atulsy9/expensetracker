@@ -29,3 +29,14 @@
   top: 30% !important;
   left: 30% !important;
 }
+
+@media screen and (max-width: 768px) {
+  .expenseCard {
+    margin: 2rem;
+  }
+  .addBalaceOuterDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
