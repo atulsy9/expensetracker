@@ -1,7 +1,7 @@
 .inputBox {
   background-color: var(--css-white);
   border-width: 0;
-  width: 223px;
+  min-width: 223px;
   height: 51px;
   border-radius: 15px;
   margin: 1rem;

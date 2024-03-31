@@ -26,8 +26,10 @@
 }
 
 .ReactModal__Content {
-  top: 30% !important;
-  left: 30% !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
 }
 
 @media screen and (max-width: 768px) {

@@ -40,7 +40,6 @@ const AddIncome = ({ children, value, changebalance }) => {
       </button>
       <Modal
         isOpen={openModal}
-        // className="ReactModal__Content"
         style={{
           content: {
             inset: null,
