@@ -12,6 +12,7 @@
   font-weight: 400;
   font-size: 30px;
   color: var(--css-white);
+  text-align: center;
 }
 
 .button {
@@ -34,7 +35,8 @@
 
 @media screen and (max-width: 768px) {
   .expenseCard {
-    margin: 2rem;
+    margin: 1rem;
+    width: -webkit-fill-available;
   }
   .addBalaceOuterDiv {
     display: flex;

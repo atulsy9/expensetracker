@@ -71,6 +71,7 @@ const ReactModel = ({ isOpen, updateData, SetModel, tobeEdit, edit }) => {
         content: {
           maxWidth: "40rem",
           height: "20rem",
+          inset: 0,
           backgroundColor: "#EFEFEFD9",
         },
       }}

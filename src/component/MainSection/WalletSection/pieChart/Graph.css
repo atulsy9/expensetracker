@@ -8,3 +8,9 @@
   width: 199px !important;
   height: 199px !important;
 }
+
+@media screen and (max-width: 768px) {
+  .reactPie {
+    transform: translate(-5%);
+  }
+}
